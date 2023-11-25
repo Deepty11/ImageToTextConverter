@@ -20,7 +20,7 @@ class ConversionManager {
             
             let text = observations.compactMap { observation in
                 observation.topCandidates(1).first?.string
-            }.joined(separator: "\n")
+            }.joined(separator: " ")
             
             completion?(text)
             

@@ -13,33 +13,23 @@ enum SourceType: String, CaseIterable {
     
     case choosePhoto = "Choose Photo"
     case takePhoto = "Take Photo"
+    
+    var value: UIImagePickerController.SourceType {
+        switch self {
+        case .choosePhoto: return .photoLibrary
+        case .takePhoto: return .camera
+        }
+    }
 }
 
-class ContentViewModel {
-    @State var selectedImageURL: URL?
-    @State var convertedText: String?
+class ContentViewModel: ObservableObject {
+    @Published var convertedText: String?
     var conversionManager = ConversionManager()
-    var imagePicker = ImagePicker()
     
-    func getPrompt(from option: SourceType) -> UIImagePickerController {
-        return imagePicker.showPromptForImageSelection(sourceType: option == .choosePhoto ? .photoLibrary : .camera)
-    }
-    
-    func convertToText() {
-        guard let selectedImageURL, let image = UIImage(contentsOfFile: selectedImageURL.absoluteString) else {
-            return
-        }
-        conversionManager.convert(from: image) {[weak self] in
-            self?.convertedText = $0
+    func convertToText(for image: UIImage) {
+        conversionManager.convert(from: image) {[weak self] text in
+            self?.convertedText = text
         }
     }
 }
-
-extension ContentViewModel: ImagePickerDelegate {
-    func didSelectedImage(with url: URL) {
-        selectedImageURL = url
-    }
-    
-}
-
 

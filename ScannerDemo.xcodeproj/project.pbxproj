@@ -16,7 +16,7 @@
 		15ABF8D82B0B5B0E001C034A /* ScannerDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABF8D72B0B5B0E001C034A /* ScannerDemoUITestsLaunchTests.swift */; };
 		15ABF8E52B0B5B32001C034A /* ConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABF8E42B0B5B32001C034A /* ConversionManager.swift */; };
 		15E3C2DB2B0C5B1B00986F96 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3C2DA2B0C5B1B00986F96 /* ContentViewModel.swift */; };
-		15E3C2DE2B0C643E00986F96 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E3C2DD2B0C643E00986F96 /* ImagePicker.swift */; };
+		FDAE28162B10E87200EC48F7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAE28152B10E87200EC48F7 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 		15ABF8D72B0B5B0E001C034A /* ScannerDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		15ABF8E42B0B5B32001C034A /* ConversionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionManager.swift; sourceTree = "<group>"; };
 		15E3C2DA2B0C5B1B00986F96 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		15E3C2DD2B0C643E00986F96 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		FDAE28152B10E87200EC48F7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				15ABF8E42B0B5B32001C034A /* ConversionManager.swift */,
-				15E3C2DD2B0C643E00986F96 /* ImagePicker.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -156,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				15ABF8BC2B0B5B0B001C034A /* ContentView.swift */,
+				FDAE28152B10E87200EC48F7 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,7 +292,7 @@
 			files = (
 				15E3C2DB2B0C5B1B00986F96 /* ContentViewModel.swift in Sources */,
 				15ABF8BD2B0B5B0B001C034A /* ContentView.swift in Sources */,
-				15E3C2DE2B0C643E00986F96 /* ImagePicker.swift in Sources */,
+				FDAE28162B10E87200EC48F7 /* ImagePicker.swift in Sources */,
 				15ABF8BB2B0B5B0B001C034A /* ScannerDemoApp.swift in Sources */,
 				15ABF8E52B0B5B32001C034A /* ConversionManager.swift in Sources */,
 			);
@@ -461,6 +461,7 @@
 				DEVELOPMENT_TEAM = A2KT8CVF73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ScannerDemo wants to use Camera app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -490,6 +491,7 @@
 				DEVELOPMENT_TEAM = A2KT8CVF73;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ScannerDemo wants to use Camera app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

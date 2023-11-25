@@ -8,52 +8,52 @@
 import SwiftUI
 
 struct ContentView: View {
-    var viewModel = ContentViewModel()
+    @ObservedObject var viewModel = ContentViewModel()
+    
+    @State var showPhotoLibrary: Bool = false
+    @State var sourceType: SourceType = .choosePhoto
+    @State var image = UIImage()
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text(viewModel.convertedText ?? "No text to show")
-                    .font(.system(.body))
-                    .foregroundStyle(viewModel.convertedText != nil ? .primary : .secondary)
+                HStack(spacing: 10) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 300)
+                        .foregroundStyle(Color.secondary)
+                        .padding(.leading, 8)
+                    
+                    Text(viewModel.convertedText ?? "No text to show")
+                        .font(.system(.body))
+                        .foregroundStyle(viewModel.convertedText != nil ? .primary : .secondary)
+                        .frame(width: 100, height: 300)
+                        .multilineTextAlignment(.leading)
+                }
+                
                 HStack {
                     ForEach(SourceType.allCases, id: \.rawValue) { source in
                         Button(action: {
-                            
-                            viewModel.getPrompt(from: source)
+                            self.showPhotoLibrary = true
+                            sourceType = source
                         }, label: {
-                            Text("Choose Photo")
+                            Text(source.rawValue)
                         })
                         .padding(10)
                         .background(Color.blue)
                         .foregroundStyle(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .circular))
                     }
-                    Group {
-                        Button(action: {
-                            viewModel.getPrompt(from: .choosePhoto)
-                        }, label: {
-                            Text("Choose Photo")
-                        })
-                        Button(action: {
-                            viewModel.getPrompt(from: .takePhoto)
-                        }, label: {
-                            Text("Take Photo")
-                        })
-                    }
-                    .padding(10)
-                    .background(Color.blue)
-                    .foregroundStyle(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .circular))
-                    
-                    
                 }
-                
                 
             }
             .padding()
-            .onAppear {
-                
+            .sheet(isPresented: $showPhotoLibrary) {
+                ImagePicker(sourceType: sourceType.value, selectedImage: self.$image)
+            }
+            .onChange(of: image) {
+                viewModel.convertToText(for: image)
             }
             .navigationTitle("Scan Image")
             .navigationBarTitleDisplayMode(.inline)
