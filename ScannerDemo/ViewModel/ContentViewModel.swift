@@ -20,10 +20,18 @@ enum SourceType: String, CaseIterable {
         case .takePhoto: return .camera
         }
     }
+    
+    var imageName: String {
+        switch self {
+        case .choosePhoto: return "photo"
+        case .takePhoto: return "camera"
+        }
+    }
 }
 
 class ContentViewModel: ObservableObject {
     @Published var convertedText: String?
+    @State var image = UIImage(systemName: "photo")!
     var conversionManager = ConversionManager()
     
     func convertToText(for image: UIImage) {
