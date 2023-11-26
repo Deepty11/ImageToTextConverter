@@ -45,7 +45,7 @@ struct ContentView: View {
             }
             .padding()
             .sheet(isPresented: $showPhotoLibrary) {
-                ImagePicker(sourceType: sourceType.value, selectedImage: viewModel.$image)
+                ImagePicker(sourceType: sourceType.value, selectedImage: $viewModel.image)
             }
             .onChange(of: viewModel.image) {
                 viewModel.convertToText(for: viewModel.image)

@@ -31,7 +31,7 @@ enum SourceType: String, CaseIterable {
 
 class ContentViewModel: ObservableObject {
     @Published var convertedText: String?
-    @State var image = UIImage(systemName: "photo")!
+    @Published var image = UIImage(systemName: "photo")!
     var conversionManager = ConversionManager()
     
     func convertToText(for image: UIImage) {

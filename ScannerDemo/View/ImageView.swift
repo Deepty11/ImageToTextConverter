@@ -15,7 +15,6 @@ struct ImageView: View {
         Image(uiImage: image)
             .resizable()
             .scaledToFit()
-            .frame(width: 50, height: 50)
             .foregroundStyle(Color.secondary)
             .padding(.leading, 8)
     }
